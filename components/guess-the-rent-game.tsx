@@ -172,7 +172,7 @@ export function GuessTheRentGame() {
       {/* Header */}
       <div className="text-center mb-8">
         <h1 className="font-[family-name:var(--font-press-start)] text-lg md:text-2xl neon-text-cyan mb-2 leading-relaxed">
-          GUESS THE RENT
+          GUESS THE RENT MACHA
         </h1>
         <p className="font-[family-name:var(--font-vt323)] text-2xl md:text-3xl neon-text-magenta">
           BENGALURU EDITION
