@@ -3,96 +3,74 @@
 import { useState, useEffect, useCallback } from "react"
 
 const properties = [
-  {
-    location: "Rajajinagar, Bangalore",
-    amenities: ["3 BHK", "Furnished", "3 Bathrooms", "3 Balconies"],
-    actual_price: "₹2.5 Lac"
-  },
-  {
-    location: "Binny Pete, Bangalore",
-    amenities: ["2 BHK", "Semi-Furnished", "2 Bathrooms", "1 Balcony"],
-    actual_price: "₹55,000"
-  },
-  {
-    location: "Whitefield, Bangalore",
-    amenities: ["5 BHK", "Semi-Furnished", "5 Bathrooms", "3 Balconies"],
-    actual_price: "₹4.5 Lac"
-  },
-  {
-    location: "Hebbal, Bangalore",
-    amenities: ["3 BHK", "Semi-Furnished", "3 Bathrooms", "2 Balconies"],
-    actual_price: "₹70,000"
-  },
-  {
-    location: "Lavelle Road, Bangalore",
-    amenities: ["2 BHK", "Furnished", "2 Bathrooms", "4 Balconies"],
-    actual_price: "₹2.7 Lac"
-  },
-  {
-    location: "Whitefield, Bangalore",
-    amenities: ["4 BHK", "Semi-Furnished", "5 Bathrooms", "4 Balconies"],
-    actual_price: "₹1.4 Lac"
-  },
-  {
-    location: "Hebbal, Bangalore",
-    amenities: ["3 BHK", "Semi-Furnished", "3 Bathrooms", "2 Balconies"],
-    actual_price: "₹85,000"
-  },
-  {
-    location: "Whitefield, Bangalore",
-    amenities: ["3 BHK", "Semi-Furnished", "3 Bathrooms", "2 Balconies"],
-    actual_price: "₹60,000"
-  },
-  {
-    location: "Kanakapura Road, Bangalore",
-    amenities: ["3 BHK", "Semi-Furnished", "3 Bathrooms", "1 Balcony"],
-    actual_price: "₹65,000"
-  },
-  {
-    location: "Bannerghatta Main Road, Bangalore",
-    amenities: ["3 BHK", "Semi-Furnished", "4 Bathrooms", "2 Balconies"],
-    actual_price: "₹1.3 Lac"
-  },
-  {
-    location: "Kothanur, Bangalore",
-    amenities: ["4 BHK", "Semi-Furnished", "5 Bathrooms", "3 Balconies"],
-    actual_price: "₹1.1 Lac"
-  },
-  {
-    location: "Huvinayakanahalli, Bangalore",
-    amenities: ["2 BHK", "Semi-Furnished", "2 Bathrooms", "2 Balconies"],
-    actual_price: "₹21,000"
-  },
-  {
-    location: "Whitefield, Bangalore",
-    amenities: ["4 BHK", "Semi-Furnished", "4 Bathrooms", "2 Balconies"],
-    actual_price: "₹2.5 Lac"
-  },
-  {
-    location: "Cunningham Road, Bangalore",
-    amenities: ["2 BHK", "Furnished", "2 Bathrooms", "1 Balcony"],
-    actual_price: "₹70,000"
-  },
-  {
-    location: "Manayata Tech Park, Bangalore",
-    amenities: ["2 BHK", "Unfurnished", "2 Bathrooms", "2 Balconies"],
-    actual_price: "₹37,000"
-  },
-  {
-    location: "Malleshwaram, Bangalore",
-    amenities: ["3 BHK", "Semi-Furnished", "3 Bathrooms", "3 Balconies"],
-    actual_price: "₹77,000"
-  },
-  {
-    location: "Arekere, Bangalore",
-    amenities: ["3 BHK", "Semi-Furnished", "3 Bathrooms", "2 Balconies"],
-    actual_price: "₹73,000"
-  },
-  {
-    location: "Koramangala, Bangalore",
-    amenities: ["2 BHK", "Furnished", "2 Bathrooms", "2 Balconies"],
-    actual_price: "₹1.4 Lac"
-  }
+  { location: "Rajajinagar, Bangalore", amenities: ["3 BHK", "Furnished", "3 Bathrooms", "3 Balconies"], actual_price: "₹2.5 Lac" },
+  { location: "Binny Pete, Bangalore", amenities: ["2 BHK", "Semi-Furnished", "2 Bathrooms", "1 Balcony"], actual_price: "₹55,000" },
+  { location: "Whitefield, Bangalore", amenities: ["5 BHK", "Semi-Furnished", "5 Bathrooms", "3 Balconies"], actual_price: "₹4.5 Lac" },
+  { location: "Hebbal, Bangalore", amenities: ["3 BHK", "Semi-Furnished", "3 Bathrooms", "2 Balconies"], actual_price: "₹70,000" },
+  { location: "Lavelle Road, Bangalore", amenities: ["2 BHK", "Furnished", "2 Bathrooms", "4 Balconies"], actual_price: "₹2.7 Lac" },
+  { location: "Whitefield, Bangalore", amenities: ["4 BHK", "Semi-Furnished", "5 Bathrooms", "4 Balconies"], actual_price: "₹1.4 Lac" },
+  { location: "Hebbal, Bangalore", amenities: ["3 BHK", "Semi-Furnished", "3 Bathrooms", "2 Balconies"], actual_price: "₹85,000" },
+  { location: "Whitefield, Bangalore", amenities: ["3 BHK", "Semi-Furnished", "3 Bathrooms", "2 Balconies"], actual_price: "₹60,000" },
+  { location: "Kanakapura Road, Bangalore", amenities: ["3 BHK", "Semi-Furnished", "3 Bathrooms", "1 Balcony"], actual_price: "₹65,000" },
+  { location: "Bannerghatta Main Road, Bangalore", amenities: ["3 BHK", "Semi-Furnished", "4 Bathrooms", "2 Balconies"], actual_price: "₹1.3 Lac" },
+  { location: "Kothanur, Bangalore", amenities: ["4 BHK", "Semi-Furnished", "5 Bathrooms", "3 Balconies"], actual_price: "₹1.1 Lac" },
+  { location: "Huvinayakanahalli, Bangalore", amenities: ["2 BHK", "Semi-Furnished", "2 Bathrooms", "2 Balconies"], actual_price: "₹21,000" },
+  { location: "Whitefield, Bangalore", amenities: ["4 BHK", "Semi-Furnished", "4 Bathrooms", "2 Balconies"], actual_price: "₹2.5 Lac" },
+  { location: "Cunningham Road, Bangalore", amenities: ["2 BHK", "Furnished", "2 Bathrooms", "1 Balcony"], actual_price: "₹70,000" },
+  { location: "Manayata Tech Park, Bangalore", amenities: ["2 BHK", "Unfurnished", "2 Bathrooms", "2 Balconies"], actual_price: "₹37,000" },
+  { location: "Malleshwaram, Bangalore", amenities: ["3 BHK", "Semi-Furnished", "3 Bathrooms", "3 Balconies"], actual_price: "₹77,000" },
+  { location: "Arekere, Bangalore", amenities: ["3 BHK", "Semi-Furnished", "3 Bathrooms", "2 Balconies"], actual_price: "₹73,000" },
+  { location: "Koramangala, Bangalore", amenities: ["2 BHK", "Furnished", "2 Bathrooms", "2 Balconies"], actual_price: "₹1.4 Lac" },
+  { location: "Indiranagar, Bangalore", amenities: ["2 BHK", "Semi-Furnished", "2 Bathrooms", "1 Balcony"], actual_price: "₹45,000" },
+  { location: "HSR Layout, Bangalore", amenities: ["1 BHK", "Furnished", "1 Bathroom", "1 Balcony"], actual_price: "₹28,000" },
+  { location: "Electronic City, Bangalore", amenities: ["3 BHK", "Semi-Furnished", "3 Bathrooms", "2 Balconies"], actual_price: "₹32,000" },
+  { location: "Jayanagar, Bangalore", amenities: ["4 BHK", "Furnished", "4 Bathrooms", "3 Balconies"], actual_price: "₹1.2 Lac" },
+  { location: "Bellandur, Bangalore", amenities: ["2 BHK", "Semi-Furnished", "2 Bathrooms", "2 Balconies"], actual_price: "₹52,000" },
+  { location: "Sarjapur Road, Bangalore", amenities: ["3 BHK", "Unfurnished", "3 Bathrooms", "1 Balcony"], actual_price: "₹48,000" },
+  { location: "JP Nagar, Bangalore", amenities: ["2 BHK", "Furnished", "2 Bathrooms", "2 Balconies"], actual_price: "₹35,000" },
+  { location: "BTM Layout, Bangalore", amenities: ["1 BHK", "Semi-Furnished", "1 Bathroom", "0 Balconies"], actual_price: "₹18,000" },
+  { location: "Marathahalli, Bangalore", amenities: ["3 BHK", "Semi-Furnished", "3 Bathrooms", "2 Balconies"], actual_price: "₹55,000" },
+  { location: "Yelahanka, Bangalore", amenities: ["2 BHK", "Unfurnished", "2 Bathrooms", "1 Balcony"], actual_price: "₹22,000" },
+  { location: "Banashankari, Bangalore", amenities: ["3 BHK", "Furnished", "3 Bathrooms", "2 Balconies"], actual_price: "₹42,000" },
+  { location: "CV Raman Nagar, Bangalore", amenities: ["2 BHK", "Semi-Furnished", "2 Bathrooms", "2 Balconies"], actual_price: "₹38,000" },
+  { location: "Ulsoor, Bangalore", amenities: ["3 BHK", "Furnished", "3 Bathrooms", "3 Balconies"], actual_price: "₹1.1 Lac" },
+  { location: "Basavanagudi, Bangalore", amenities: ["2 BHK", "Semi-Furnished", "2 Bathrooms", "1 Balcony"], actual_price: "₹30,000" },
+  { location: "Frazer Town, Bangalore", amenities: ["3 BHK", "Furnished", "4 Bathrooms", "2 Balconies"], actual_price: "₹95,000" },
+  { location: "Benson Town, Bangalore", amenities: ["4 BHK", "Semi-Furnished", "4 Bathrooms", "3 Balconies"], actual_price: "₹1.6 Lac" },
+  { location: "Sadashivanagar, Bangalore", amenities: ["4 BHK", "Furnished", "5 Bathrooms", "4 Balconies"], actual_price: "₹3.5 Lac" },
+  { location: "RT Nagar, Bangalore", amenities: ["2 BHK", "Semi-Furnished", "2 Bathrooms", "1 Balcony"], actual_price: "₹24,000" },
+  { location: "Vidyaranyapura, Bangalore", amenities: ["3 BHK", "Unfurnished", "2 Bathrooms", "1 Balcony"], actual_price: "₹19,000" },
+  { location: "Kengeri, Bangalore", amenities: ["2 BHK", "Semi-Furnished", "2 Bathrooms", "1 Balcony"], actual_price: "₹16,000" },
+  { location: "Sahakara Nagar, Bangalore", amenities: ["3 BHK", "Furnished", "3 Bathrooms", "2 Balconies"], actual_price: "₹55,000" },
+  { location: "Kammanahalli, Bangalore", amenities: ["2 BHK", "Semi-Furnished", "2 Bathrooms", "2 Balconies"], actual_price: "₹29,000" },
+  { location: "Kalyan Nagar, Bangalore", amenities: ["3 BHK", "Furnished", "3 Bathrooms", "3 Balconies"], actual_price: "₹65,000" },
+  { location: "HBR Layout, Bangalore", amenities: ["2 BHK", "Unfurnished", "2 Bathrooms", "1 Balcony"], actual_price: "₹20,000" },
+  { location: "Sanjaynagar, Bangalore", amenities: ["2 BHK", "Semi-Furnished", "2 Bathrooms", "1 Balcony"], actual_price: "₹26,000" },
+  { location: "Mathikere, Bangalore", amenities: ["1 BHK", "Semi-Furnished", "1 Bathroom", "1 Balcony"], actual_price: "₹14,000" },
+  { location: "Peenya, Bangalore", amenities: ["2 BHK", "Unfurnished", "1 Bathroom", "1 Balcony"], actual_price: "₹12,000" },
+  { location: "Dasarahalli, Bangalore", amenities: ["1 BHK", "Semi-Furnished", "1 Bathroom", "0 Balconies"], actual_price: "₹10,500" },
+  { location: "Nagarbhavi, Bangalore", amenities: ["3 BHK", "Semi-Furnished", "3 Bathrooms", "2 Balconies"], actual_price: "₹32,000" },
+  { location: "Rajarajeshwari Nagar, Bangalore", amenities: ["2 BHK", "Furnished", "2 Bathrooms", "2 Balconies"], actual_price: "₹27,000" },
+  { location: "Uttarahalli, Bangalore", amenities: ["3 BHK", "Semi-Furnished", "2 Bathrooms", "1 Balcony"], actual_price: "₹22,000" },
+  { location: "Padmanabhanagar, Bangalore", amenities: ["2 BHK", "Semi-Furnished", "2 Bathrooms", "1 Balcony"], actual_price: "₹25,000" },
+  { location: "Kumaraswamy Layout, Bangalore", amenities: ["1 BHK", "Furnished", "1 Bathroom", "1 Balcony"], actual_price: "₹15,000" },
+  { location: "Bommanahalli, Bangalore", amenities: ["2 BHK", "Semi-Furnished", "2 Bathrooms", "1 Balcony"], actual_price: "₹21,000" },
+  { location: "Harlur, Bangalore", amenities: ["3 BHK", "Furnished", "3 Bathrooms", "2 Balconies"], actual_price: "₹60,000" },
+  { location: "Kasavanahalli, Bangalore", amenities: ["2 BHK", "Semi-Furnished", "2 Bathrooms", "2 Balconies"], actual_price: "₹42,000" },
+  { location: "AECS Layout, Bangalore", amenities: ["1 BHK", "Furnished", "1 Bathroom", "1 Balcony"], actual_price: "₹25,000" },
+  { location: "Brookefield, Bangalore", amenities: ["3 BHK", "Semi-Furnished", "3 Bathrooms", "3 Balconies"], actual_price: "₹58,000" },
+  { location: "Kundalahalli, Bangalore", amenities: ["2 BHK", "Furnished", "2 Bathrooms", "1 Balcony"], actual_price: "₹45,000" },
+  { location: "Mahadevapura, Bangalore", amenities: ["2 BHK", "Semi-Furnished", "2 Bathrooms", "2 Balconies"], actual_price: "₹38,000" },
+  { location: "KR Puram, Bangalore", amenities: ["3 BHK", "Unfurnished", "2 Bathrooms", "1 Balcony"], actual_price: "₹24,000" },
+  { location: "Ramamurthy Nagar, Bangalore", amenities: ["2 BHK", "Semi-Furnished", "2 Bathrooms", "1 Balcony"], actual_price: "₹22,000" },
+  { location: "Horamavu, Bangalore", amenities: ["3 BHK", "Furnished", "3 Bathrooms", "2 Balconies"], actual_price: "₹35,000" },
+  { location: "Hennur, Bangalore", amenities: ["4 BHK", "Semi-Furnished", "4 Bathrooms", "3 Balconies"], actual_price: "₹85,000" },
+  { location: "Thanisandra, Bangalore", amenities: ["3 BHK", "Semi-Furnished", "3 Bathrooms", "2 Balconies"], actual_price: "₹48,000" },
+  { location: "Jakkur, Bangalore", amenities: ["3 BHK", "Furnished", "3 Bathrooms", "2 Balconies"], actual_price: "₹65,000" },
+  { location: "Yelahanka New Town, Bangalore", amenities: ["2 BHK", "Semi-Furnished", "2 Bathrooms", "2 Balconies"], actual_price: "₹28,000" },
+  { location: "Yeshwanthpur, Bangalore", amenities: ["3 BHK", "Furnished", "3 Bathrooms", "3 Balconies"], actual_price: "₹75,000" },
+  { location: "Koramangala 4th Block, Bangalore", amenities: ["4 BHK", "Semi-Furnished", "4 Bathrooms", "2 Balconies"], actual_price: "₹1.8 Lac" },
+  { location: "Indiranagar 100ft Road, Bangalore", amenities: ["3 BHK", "Furnished", "3 Bathrooms", "2 Balconies"], actual_price: "₹1.3 Lac" }
 ]
 
 const roasts = [
@@ -194,7 +172,7 @@ export function GuessTheRentGame() {
       {/* Header */}
       <div className="text-center mb-8">
         <h1 className="font-[family-name:var(--font-press-start)] text-lg md:text-2xl neon-text-cyan mb-2 leading-relaxed">
-          GUESS THE RENT
+          GUESS THE RENT MACHA
         </h1>
         <p className="font-[family-name:var(--font-vt323)] text-2xl md:text-3xl neon-text-magenta">
           BENGALURU EDITION
