@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import { PixelAnakin } from "./pixel-anakin"
 
 const properties = [
   { location: "Rajajinagar, Bangalore", amenities: ["3 BHK", "Furnished", "3 Bathrooms", "3 Balconies"], actual_price: "₹2.5 Lac" },
@@ -376,12 +375,9 @@ export function GuessTheRentGame() {
       </div>
 
       {/* Footer */}
-      <p className="font-[family-name:var(--font-vt323)] text-lg text-muted-foreground mt-8 text-center mb-20">
+      <p className="font-[family-name:var(--font-vt323)] text-lg text-muted-foreground mt-8 text-center">
         INSERT COIN TO CONTINUE... OR JUST MOVE TO ELECTRONIC CITY 🏃
       </p>
-
-      {/* Animated Anakin Character */}
-      <PixelAnakin state={hasGuessed ? (isWin ? "win" : "lose") : "playing"} />
     </div>
   )
 }
