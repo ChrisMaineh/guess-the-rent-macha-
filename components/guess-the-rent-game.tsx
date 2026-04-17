@@ -110,6 +110,14 @@ function formatPrice(value: number): string {
   return `₹${value.toLocaleString("en-IN")}`
 }
 
+const cities = [
+  { name: "BENGALURU", active: true },
+  { name: "MUMBAI", active: false },
+  { name: "HYDERABAD", active: false },
+  { name: "PUNE", active: false },
+  { name: "DELHI", active: false },
+]
+
 export function GuessTheRentGame() {
   const [currentProperty, setCurrentProperty] = useState(properties[0])
   const [guess, setGuess] = useState(100000)
@@ -119,6 +127,8 @@ export function GuessTheRentGame() {
   const [score, setScore] = useState(0)
   const [level, setLevel] = useState(1)
   const [usedIndices, setUsedIndices] = useState<number[]>([])
+  const [cityDropdownOpen, setCityDropdownOpen] = useState(false)
+  const [selectedCity, setSelectedCity] = useState("BENGALURU")
 
   const selectRandomProperty = useCallback(() => {
     let availableIndices = properties
@@ -174,9 +184,54 @@ export function GuessTheRentGame() {
         <h1 className="font-[family-name:var(--font-press-start)] text-lg md:text-2xl neon-text-cyan mb-2 leading-relaxed">
           GUESS THE RENT MACHA
         </h1>
-        <p className="font-[family-name:var(--font-vt323)] text-2xl md:text-3xl neon-text-magenta">
-          BENGALURU EDITION
-        </p>
+        
+        {/* City Selector Dropdown */}
+        <div className="relative inline-block mt-2">
+          <button
+            onClick={() => setCityDropdownOpen(!cityDropdownOpen)}
+            className="font-[family-name:var(--font-vt323)] text-2xl md:text-3xl neon-text-green 
+              px-4 py-2 arcade-border bg-card flex items-center gap-2 hover:bg-muted/30 transition-colors"
+          >
+            <span>{selectedCity} EDITION</span>
+            <span className="text-lg">{cityDropdownOpen ? "▲" : "▼"}</span>
+          </button>
+          
+          {cityDropdownOpen && (
+            <div className="absolute top-full left-0 right-0 mt-1 arcade-border bg-card z-50">
+              {cities.map((city) => (
+                <button
+                  key={city.name}
+                  disabled={!city.active}
+                  onClick={() => {
+                    if (city.active) {
+                      setSelectedCity(city.name)
+                      setCityDropdownOpen(false)
+                    }
+                  }}
+                  className={`w-full text-left px-4 py-3 font-[family-name:var(--font-vt323)] text-xl md:text-2xl 
+                    flex items-center justify-between border-b border-border last:border-b-0
+                    ${city.active 
+                      ? "neon-text-green hover:bg-muted/50 cursor-pointer" 
+                      : "text-muted-foreground/40 cursor-not-allowed"
+                    }
+                    ${city.name === selectedCity && city.active ? "bg-muted/30" : ""}
+                  `}
+                >
+                  <span className="flex items-center gap-2">
+                    {city.active && <span className="text-neon-green">{">"}</span>}
+                    {!city.active && <span className="text-muted-foreground/30">🔒</span>}
+                    {city.name}
+                  </span>
+                  {!city.active && (
+                    <span className="font-[family-name:var(--font-press-start)] text-[8px] text-muted-foreground/50">
+                      COMING SOON
+                    </span>
+                  )}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Score Board */}
